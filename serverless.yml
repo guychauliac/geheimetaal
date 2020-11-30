@@ -1,0 +1,23 @@
+service: geheimetaal
+
+provider:
+  name: aws
+  runtime: python3.8
+
+  region: eu-central-1
+
+functions:
+  versleutel:
+    handler: src.geheim_schrift_functies.versleutel
+    events:
+      - http:
+          path: zin/versleutel
+          method: post
+          cors: true
+  ontsleutel:
+    handler: src.geheim_schrift_functies.ontsleutel
+    events:
+      - http:
+          path: zin/ontsleutel
+          method: post
+          cors: true
